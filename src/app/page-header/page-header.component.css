@@ -1,0 +1,16 @@
+.page-header {
+  margin-top: 50px;
+}
+
+.page-header .btn-container {
+  right: 0;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.instructional-text {
+  font-size: 20px;
+  margin-bottom: 20px;
+}

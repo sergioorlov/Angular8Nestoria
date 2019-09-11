@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-5">
+    <form #f="ngForm">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" name="place" class="form-control"
+                 [(ngModel)]="formContent"
+                 id="searchField" placeholder="Enter your location..." autofocus>
+          <span class="input-group-btn">
+              <button type="submit" class="btn btn-outline-secondary"
+                      (click)="onSubmit(f.value)">Search
+              </button>
+            </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

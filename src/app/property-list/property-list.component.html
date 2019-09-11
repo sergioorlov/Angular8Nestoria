@@ -1,0 +1,61 @@
+<div *ngIf="curPath.indexOf('search') == 0">
+  <app-search-form (submitForm)="sendRequest($event['place'])" (submitLocation)="sendRequest(null, itemsPerPage, 1, $event)"></app-search-form>
+  <div *ngIf="loading">Loading...</div>
+
+  <div *ngIf="listings && listings.length > 0">
+
+    <div class="container">
+
+      <div class="row">
+        <app-property-item class="listing-item col-md-12" *ngFor="let house of listings" [house]="house" [houseId]="getHouseId(house)" (toggleFavs)="toggleFavorites($event)">
+        </app-property-item>
+      </div>
+      <div>
+
+        <div *ngFor="let item of pagedItems">{{item.name}}</div>
+
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1);sendRequest(place, itemsPerPage, 1)">To the begining</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1);
+                        sendRequest(place, itemsPerPage, pager.currentPage)">Back</a>
+          </li>
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page);
+                        sendRequest(place, itemsPerPage, page)">{{page}}</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1);
+                        sendRequest(place, itemsPerPage, pager.currentPage)">Next</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages);
+                        sendRequest(place, itemsPerPage, pager.totalPages)">To the end</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="listings && listings.length == 0">
+    <p class="num-of-items-found nothing-found">
+      No results were found for your request. Please make sure there are no errors in the request.
+    </p>
+  </div>
+</div>
+
+<div *ngIf="curPath == 'favorites'">
+  <div *ngIf="favorites && favoritesKeys.length > 0">
+    <p class="num-of-items-found">
+      You marked  {{ favoritesKeys.length }} house(s).
+    </p>
+    <div class="container">
+      <div class="row">
+        <app-property-item class="listing-item col-md-12" *ngFor="let id of favoritesKeys" [house]="favorites[id]" [houseId]="id" (toggleFavs)="toggleFavorites($event)">
+        </app-property-item>
+      </div>
+    </div>
+  </div>
+
+</div>
