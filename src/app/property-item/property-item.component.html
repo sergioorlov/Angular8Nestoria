@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <a [routerLink]="['/single']" (click)="sendHouseInfo(house)" class="house-title">{{house.title}}</a>
+        <a target="_blank" [routerLink]="['/single']" (click)="sendHouseInfo(house)" class="house-title">{{house.title}}</a>
       </div>
 
       <div class="price col-md-2">{{house.price_formatted}}</div>
