@@ -1,5 +1,8 @@
 <div *ngIf="curPath.indexOf('search') == 0">
-  <app-search-form (submitForm)="sendRequest($event['place'])" (submitLocation)="sendRequest(null, itemsPerPage, 1, $event)"></app-search-form>
+  <app-search-form
+    (submitForm)="sendRequest($event['place'])"
+    (submitLocation)="sendRequest(null, itemsPerPage, 1, $event)"
+  ></app-search-form>
   <div *ngIf="loading">Loading...</div>
 
   <div *ngIf="listings && listings.length > 0">
@@ -7,7 +10,12 @@
     <div class="container">
 
       <div class="row">
-        <app-property-item class="listing-item col-md-12" *ngFor="let house of listings" [house]="house" [houseId]="getHouseId(house)" (toggleFavs)="toggleFavorites($event)">
+        <app-property-item
+          class="listing-item col-md-12"
+          *ngFor="let house of listings"
+          [house]="house"
+          [houseId]="getHouseId(house)"
+          (toggleFavs)="toggleFavorites($event)">
         </app-property-item>
       </div>
       <div>
@@ -52,7 +60,12 @@
     </p>
     <div class="container">
       <div class="row">
-        <app-property-item class="listing-item col-md-12" *ngFor="let id of favoritesKeys" [house]="favorites[id]" [houseId]="id" (toggleFavs)="toggleFavorites($event)">
+        <app-property-item
+          class="listing-item col-md-12"
+          *ngFor="let id of favoritesKeys"
+          [house]="favorites[id]"
+          [houseId]="id"
+          (toggleFavs)="toggleFavorites($event)">
         </app-property-item>
       </div>
     </div>

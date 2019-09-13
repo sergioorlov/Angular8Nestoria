@@ -1,10 +1,18 @@
 <div class="header">
   <div class="page-header">
     <div class="btn-container">
-      <a *ngIf="getLocation().indexOf('search') == 1" [routerLink]="['/favorites']" class="btn btn-primary">Favorite</a>
-      <a *ngIf="getLocation().indexOf('favorites') == 1" [routerLink]="['/search']" class="btn btn-primary">Home</a>
-      <a *ngIf="getLocation().indexOf('single') == 1" [routerLink]="['/search']" class="btn btn-primary">Home</a>
-      <a *ngIf="getLocation().indexOf('single') == 1" [routerLink]="['/favorites']" class="btn btn-primary">Favorite</a>
+      <a *ngIf="getLocation().indexOf('search') == 1"
+         [routerLink]="['/favorites']"
+         class="btn btn-primary">Favorite</a>
+      <a *ngIf="getLocation().indexOf('favorites') == 1"
+         [routerLink]="['/search']"
+         class="btn btn-primary">Home</a>
+      <a *ngIf="getLocation().indexOf('single') == 1"
+         [routerLink]="['/search']"
+         class="btn btn-primary">Home</a>
+      <a *ngIf="getLocation().indexOf('single') == 1"
+         [routerLink]="['/favorites']"
+         class="btn btn-primary">Favorite</a>
     </div>
   </div>
 </div>

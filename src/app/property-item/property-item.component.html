@@ -7,12 +7,15 @@
         </div>
       </div>
       <div class="col-md-6">
-        <a target="_blank" [routerLink]="['/single']" (click)="sendHouseInfo(house)" class="house-title">{{house.title}}</a>
+        <a target="_blank"
+           [routerLink]="['/single']"
+           (click)="sendHouseInfo(house)"
+           class="house-title">{{house.title}}</a>
       </div>
 
       <div class="price col-md-2">{{house.price_formatted}}</div>
       <div class="col-md-2 text-right">
-        <a href="#" (click)="toggleFavorites(); " [ngClass]="{
+        <a href="#" (click)="toggleFavorites();" [ngClass]="{
             'gold' : house.isInFavorites,
             'glyphicon-star': house.isInFavorites,
             'glyphicon-star-empty': !house.isInFavorites}"
