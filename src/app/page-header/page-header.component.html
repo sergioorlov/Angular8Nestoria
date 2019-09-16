@@ -1,7 +1,7 @@
 <div class="header">
   <div class="page-header">
     <div class="btn-container">
-      <a *ngIf="router.url === '/search'" [routerLink]="['/favorites']"
+      <a *ngIf="router.url === '/search' || '/search/place/**/**'" [routerLink]="['/favorites']"
         class="btn btn-primary">Favorite</a>
       <a *ngIf="router.url === '/favorites'" [routerLink]="['/search']"
          class="btn btn-primary">Home</a>
