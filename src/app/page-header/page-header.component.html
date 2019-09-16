@@ -3,14 +3,11 @@
     <div class="btn-container">
       <a *ngIf="router.url === '/search'" [routerLink]="['/favorites']"
         class="btn btn-primary">Favorite</a>
-      <a *ngIf="router.url === '/favorites'"
-         [routerLink]="['/search']"
+      <a *ngIf="router.url === '/favorites'" [routerLink]="['/search']"
          class="btn btn-primary">Home</a>
-      <a *ngIf="router.url === '/single'"
-         [routerLink]="['/search']"
+      <a *ngIf="router.url === '/single'" [routerLink]="['/search']"
          class="btn btn-primary">Home</a>
-      <a *ngIf="router.url === '/single'"
-         [routerLink]="['/favorites']"
+      <a *ngIf="router.url === '/single'" [routerLink]="['/favorites']"
          class="btn btn-primary">Favorite</a>
     </div>
   </div>
