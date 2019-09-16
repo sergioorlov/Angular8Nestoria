@@ -15,7 +15,6 @@ export class SearchFormComponent implements OnInit {
 
   onSubmit(formContent) {
     this.submitForm.emit(formContent);
-    console.log('formContent: ', formContent);
   }
 
   ngOnInit() {

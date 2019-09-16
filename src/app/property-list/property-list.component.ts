@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ListingService} from '../shared/listing.service';
 import {SinglePageService} from '../shared/single-page.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Property} from '../shared/property';
 import {PagesService} from '../shared/pages.service';
 import {Location} from '@angular/common';
@@ -49,7 +49,6 @@ export class PropertyListComponent implements OnInit {
     this.curPath = this.location.path().split('/')[1];
 
     this.house = JSON.parse(this.singlePageService.getHouseInfo());
-    console.log('Property list house: ', this.house);
   }
 
   toggleFavorites(house) {
@@ -69,11 +68,18 @@ export class PropertyListComponent implements OnInit {
     return this.listingService.getId(house.lister_url);
   }
 
+  // sendAll(pages: number,
+  //         place?: string,
+  //         itemsPerPage = 24,
+  //         page = 1) {
+  //   this.setPage(pages);
+  //   this.sendRequest(place, itemsPerPage, page);
+  // }
+
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-
     this.pager = this.pagesService.getPager(this.data.response.total_results, page, this.itemsPerPage);
     this.pagedItems = this.listings.slice(this.pager.startIndex, this.pager.endIndex + 1);
     this.currentPage = this.pager.currentPage;
@@ -83,7 +89,6 @@ export class PropertyListComponent implements OnInit {
     this.loading = true;
 
     if (place) {
-      console.log('Place: ', this.place);
       if ((this.place && this.place !== place) || !this.place) {
         this.currentPage = 1;
       }
@@ -96,10 +101,10 @@ export class PropertyListComponent implements OnInit {
         this.listings = this.data.response.listings;
         this.pages = this.data.response.total_pages;
         this.setPage(this.currentPage);
+        this.setPage(page);
       },
       err => console.error(err),
       () => {
-        console.log('успех');
         this.loading = false;
       }
     );
@@ -110,9 +115,9 @@ export class PropertyListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.pipe(map(params => {
-      if (params['place']) {
-        this.currentPage = +params['page'];
-        this.sendRequest(params['place'], params['listing_type'], this.itemsPerPage, +params['page']);
+      if (params.place) {
+        this.currentPage = +params.page;
+        this.sendRequest(params.place, params.listing_type, this.itemsPerPage, +params.page);
       }})
       );
   }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +11,6 @@ export class ListingService {
   constructor(private http: HttpClient) { }
 
   getListing(place?: string, numres = 24, page = 1) {
-    console.log('Place: ', place);
-
 
     let params = new URLSearchParams();
     params.set('country', 'uk');
@@ -29,25 +26,14 @@ export class ListingService {
     }
 
     let jsonUrl = this.apiUrl + '?' + params.toString();
-    console.log('jsonUrl: ', jsonUrl);
 
     return this.http.get(jsonUrl)
-      .pipe(map(res => res));
-  }
-
-
-  getPathname(url: string) {
-    let l = document.createElement('a');
-    l.href = url;
-    let pathname = l.pathname;
-    console.log('pathname: ', pathname);
-    return pathname;
+      .pipe(res => res);
   }
 
   getId(url: string) {
-    let pathname = this.getPathname(url);
-    let id = parseInt(pathname.split('/')[2]);
-    console.log('ID: ', id);
+    const ref = new URL(url);
+    const id = parseInt(ref.pathname.split('/')[2]);
     return id;
   }
 

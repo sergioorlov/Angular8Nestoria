@@ -9,13 +9,11 @@ import {SinglePageService} from '../shared/single-page.service';
 export class PropertySingleComponent implements OnInit {
 
   @Input() house;
-  houseId;
 
   constructor(
     private singlePageService: SinglePageService
   ) {
     this.house = JSON.parse(this.singlePageService.getHouseInfo());
-    console.log('house: ', this.house);
   }
 
   ngOnInit() {

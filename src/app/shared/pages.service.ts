@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class PagesService {
 
   getUnderscoreRange(start, stop, step = 1) {
-    if (stop == null) {
+    if (stop === null) {
       stop = start || 0;
       start = 0;
     }

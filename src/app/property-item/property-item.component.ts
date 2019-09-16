@@ -30,12 +30,12 @@ export class PropertyItemComponent implements OnInit {
     if (localStorage.getItem(this.houseId)) {
       localStorage.removeItem(this.houseId);
     } else {
-      let stringified = JSON.stringify(this.house);
+      const stringified = JSON.stringify(this.house);
       localStorage.setItem(this.houseId, stringified);
     }
     this.house.isInFavorites = !this.house.isInFavorites;
     this.toggleFavs.emit(this.house);
-    return false;
+    return true;
   }
 
 
@@ -47,7 +47,7 @@ export class PropertyItemComponent implements OnInit {
     if (localStorage.getItem(this.houseId)) {
       this.house.isInFavorites = true;
     }
-    let imgContainer = this.el.querySelector('.img_container');
+    const imgContainer = this.el.querySelector('.img_container');
     this.imgWidth = imgContainer.clientWidth;
     this.imgHeight = this.imgWidth * 0.75;
   }

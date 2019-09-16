@@ -15,7 +15,7 @@
 
       <div class="price col-md-2">{{house.price_formatted}}</div>
       <div class="col-md-2 text-right">
-        <a href="#" (click)="toggleFavorites();" [ngClass]="{
+        <a (click)="toggleFavorites();" [ngClass]="{
             'gold' : house.isInFavorites,
             'glyphicon-star': house.isInFavorites,
             'glyphicon-star-empty': !house.isInFavorites}"

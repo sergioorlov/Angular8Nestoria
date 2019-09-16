@@ -1,9 +1,7 @@
-export class Property {
+export interface Property {
   id: number;
   thumb_url: string;
   title: string;
   price_formatted: string;
-  constructor(public isInFavorites: boolean = false) {
-    console.log('Property object created');
-  }
+  isInFavorites: boolean;
 }

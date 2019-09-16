@@ -13,7 +13,6 @@ export class SinglePageService {
   }
 
   getHouseInfo() {
-    console.log('houseInfo: ', this.houseInfo);
     return this.houseInfo ? this.houseInfo : localStorage.getItem('lastSeen');
   }
 
