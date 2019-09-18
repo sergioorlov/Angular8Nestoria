@@ -6,14 +6,12 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.css']
 })
-export class PageHeaderComponent implements OnInit {
+export class PageHeaderComponent {
 
   @Input() title: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router ) {}
-
-  ngOnInit() {}
 
 }

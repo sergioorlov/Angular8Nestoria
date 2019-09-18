@@ -6,7 +6,7 @@ import {SinglePageService} from '../shared/single-page.service';
   templateUrl: './property-single.component.html',
   styleUrls: ['./property-single.component.css']
 })
-export class PropertySingleComponent implements OnInit {
+export class PropertySingleComponent {
 
   @Input() house;
 
@@ -14,9 +14,6 @@ export class PropertySingleComponent implements OnInit {
     private singlePageService: SinglePageService
   ) {
     this.house = JSON.parse(this.singlePageService.getHouseInfo());
-  }
-
-  ngOnInit() {
   }
 
 }

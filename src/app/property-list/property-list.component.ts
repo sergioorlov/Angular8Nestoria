@@ -68,14 +68,6 @@ export class PropertyListComponent implements OnInit {
     return this.listingService.getId(house.lister_url);
   }
 
-  // sendAll(pages: number,
-  //         place?: string,
-  //         itemsPerPage = 24,
-  //         page = 1) {
-  //   this.setPage(pages);
-  //   this.sendRequest(place, itemsPerPage, page);
-  // }
-
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
