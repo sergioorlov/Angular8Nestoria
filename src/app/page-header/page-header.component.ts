@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -7,8 +7,6 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./page-header.component.css']
 })
 export class PageHeaderComponent {
-
-  @Input() title: string;
 
   constructor(
     private route: ActivatedRoute,

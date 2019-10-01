@@ -10,28 +10,20 @@ import {SinglePageService} from '../shared/single-page.service';
 })
 export class PropertyItemComponent implements OnInit {
 
-  private el: HTMLElement;
-  imgWidth;
-  imgHeight;
   @Input() house: Property;
-  houseId;
+           houseId;
 
   @Output() toggleFavs = new EventEmitter();
 
 
-  constructor(
-    el: ElementRef,
-    private singlePageService: SinglePageService,
-  ) {
-    this.el = el.nativeElement;
-  }
+  constructor( private singlePageService: SinglePageService ) {}
 
   toggleFavorites() {
     if (localStorage.getItem(this.houseId)) {
       localStorage.removeItem(this.houseId);
     } else {
-      const stringified = JSON.stringify(this.house);
-      localStorage.setItem(this.houseId, stringified);
+      const strify = JSON.stringify(this.house);
+      localStorage.setItem(this.houseId, strify);
     }
     this.house.isInFavorites = !this.house.isInFavorites;
     this.toggleFavs.emit(this.house);
@@ -47,9 +39,6 @@ export class PropertyItemComponent implements OnInit {
     if (localStorage.getItem(this.houseId)) {
       this.house.isInFavorites = true;
     }
-    const imgContainer = this.el.querySelector('.img_container');
-    this.imgWidth = imgContainer.clientWidth;
-    this.imgHeight = this.imgWidth * 0.75;
   }
 
 }

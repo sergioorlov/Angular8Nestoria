@@ -16,7 +16,7 @@ import {map} from 'rxjs/operators';
 export class PropertyListComponent implements OnInit {
 
   @Input() house: Property;
-  houseId;
+           houseId;
 
   place: string;
   data: any;
